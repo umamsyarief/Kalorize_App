@@ -10,6 +10,8 @@ import java.util.concurrent.TimeUnit
 
 object ApiConfig {
 
+    private const val BASE_URL = "https://kalorize-be-cwx4yokorq-et.a.run.app/"
+
     fun getApiService(context: Context): ApiService{
 
         val loggingInterceptor = if(BuildConfig.DEBUG) { HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY) }
@@ -23,7 +25,7 @@ object ApiConfig {
             .build()
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://kalorize-be-cwx4yokorq-et.a.run.app/")
+            .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()
